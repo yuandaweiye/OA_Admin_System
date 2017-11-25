@@ -2,8 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router';
 import Routers from './router';
-import './libs/css/commom.css'
+import './libs/css/commom.css';
+import iView from 'iview';
 Vue.use(VueRouter);
+Vue.use(iView);
 
 
 const RouterConfig = {
