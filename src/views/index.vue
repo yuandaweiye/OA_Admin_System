@@ -57,7 +57,6 @@
     width: 260px;
     height: 800px;
     float: left;
-    background-color: #CCCCCC;
   }
   .index-content_right{
     width: 700px;
@@ -81,7 +80,7 @@
     </header>
     <nav>
       <ul class="nav-list">
-        <router-link to="/" tag="p">返回首页</router-link>
+        <router-link to="/" tag="p">&nbsp;<span v-show="!isMenu">返回首页</span></router-link>
         <router-link to="/TelephoneP" tag="li">电话簿</router-link>
         <router-link to="/Tool" tag="li">工具台</router-link>
         <router-link to="/Membermanage" tag="li">成员管理</router-link>
@@ -90,7 +89,8 @@
     </nav>
     <div class="index-content">
       <div class="index-content_left" >
-          我是左边组件
+        <index-Left v-if="isMenu"></index-Left>
+        <index-Menu v-if="!isMenu"></index-Menu>
       </div>
       <div class="index-content_right">
         <router-view></router-view>
@@ -102,14 +102,40 @@
 <script>
   //导入获取cookie方法，判断用户是否登录
   import  utils  from '../libs/util';
+  import { Button,Table } from 'iview';
+  import  indexLeft from '../component/indexLeft.vue';
+  import  indexMenu from  '../component/index_menu.vue';
   export default {
+//    定义全局变量
+      data(){
+        return{
+          isMenu:true
+        }
+      },
 //        组件加载完闭之后
-    mounted:()=>{
+    mounted:function () {
+      //      判断用户是否登录，如果登录
       let userInfo=utils.getCookie("userInfo");
-      console.log(userInfo);
-//      else{location.href="/logIn"}
+      if(!userInfo){location.href="/logIn"};
     },
-    methods: {},
+    methods: {
+      getRouter:function () {
+        //      获取当前路由信息，决定加载哪个左侧栏
+          var nowRouter=this.$route.path;
+          console.log(this.$route.path);
+          if(nowRouter=="/"){this.isMenu=true}else{this.isMenu=false};
+      }
+    },
+    components:{
+      "Button":Button,
+      "Table":Table,
+      "indexLeft":indexLeft,
+      "indexMenu":indexMenu
+    },
+//    监听路由的变化
+    watch:{
+      "$route":"getRouter"
+    }
 
   };
 </script>

@@ -1,0 +1,9 @@
+<template>
+    <div>
+      左侧信息展示栏
+    </div>
+</template>
+<script>
+</script>
+<style>
+</style>
