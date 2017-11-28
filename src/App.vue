@@ -32,10 +32,56 @@ ul {
 
 li {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0;
 }
 
 a {
   color: #42b983;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+body{
+  font-size: 12px;
+  background: #E7E8EB ;
+}
+.clearfiex:after{
+  clear: both;
+  display: block;
+  content: '';
+}
+
+
+.width-260{
+  width: 260px !important;
+}
+.text-al-center{
+  text-align: center !important;
+}
+
+.padding-1-5{
+  padding-left: 5px !important;
+}
+
+.margin-l-10{
+  margin-left: 10px !important;
+}
+.margin-r-10{
+  margin-right: 10px !important;
+}
+.margin-l-10{
+  margin-left: 10px !important;
+}
+.margin-r-10{
+   margin-right: 10px !important;
+}
+.margin-t-20{
+   margin-top:20px !important;
+ }
+.margin-b-5{
+  margin-bottom:5px !important;
 }
 </style>
