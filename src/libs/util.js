@@ -1,38 +1,24 @@
-import axios from 'axios';
 
-
-let util = {
-
-};
+let Base64 = require('js-base64').Base64;
+let util = new Object();
 
 util.title = function(title) {
     title = title ? title + ' - Home' : 'iView project';
     window.document.title = title;
 };
 
-//创建的ajax实例，做了基础的的配置
-// const ajaxUrl = env === 'development' ?
-//     'http://127.0.0.1:8888' :
-//     env === 'production' ?
-//     'https://www.url.com' :
-//     'https://debug.url.com';
-// util.ajax = axios.create({
-//     baseURL: ajaxUrl,
-//     timeout: 30000
-// });
-
-
 //获取cookie方法
 /*
  * 参数 cookie的键值
  */
 
-util.getCookie=(name)=>{
-    var arr, reg = new RegExp(name);
-    if (arr = document.cookie(name))
-        return (arr);
-    else
-        return null;
+util.getCookie= function (name){
+  var cookDate=$.cookie(name);
+  if(!!cookDate && cookDate!=null){
+    return JSON.parse(Base64.decode(Base64.decode(cookDate)));
+  }else{
+    return false;
+  }
 };
 
 /*
@@ -43,11 +29,16 @@ util.getCookie=(name)=>{
  * expiredays：保存的天数
  */
 
-util.setCookie=(c_name,value,expiredays)=>{
-    var exdate = new Date();
-    value=JSON.stringify(value);
-    exdate.setDate(exdate.getDate() + expiredays);
-    document.cookie = c_name + "=" + encodeURI(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString());
+util.setCookie= function (c_name,value,expiredays){
+    var users=new Object();
+    users.username=c_name;
+    users.password=value;
+    $.cookie("oa_userInfo",Base64.encode(Base64.encode(JSON.stringify(users))),{expires:expiredays,path:'/'});
+    if(!!$.cookie("oa_users")){
+      return true;
+    }else{
+      return false;
+    }
 };
 
 /*
@@ -56,12 +47,13 @@ util.setCookie=(c_name,value,expiredays)=>{
  * c_name： cookie的键
  */
 
-util.delCookie=(c_name)=>{
-    var exp = new Date();
-    exp.setTime(exp.getTime() - 1);
-    var cval = getCookie(c_name);
-    if (cval != null)
-        document.cookie = c_name + "=" + cval + ";expires=" + exp.toGMTString();
+util.delCookie= function (name){
+    $.cookie(name,"",{ expires: -1 ,path: '/' });
+  if(!!!$.cookie(name)){
+      return true
+  }else{
+    return false
+  }
 };
 
 

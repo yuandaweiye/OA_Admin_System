@@ -35,23 +35,26 @@
         </div>
     </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
   import  utils  from '../../libs/util';
   export default {
-    data:()=>({
-      classObject:{
-        'logIn-from-header-left': true,
-        logIn_Active: true
-      },
-      classObject02:{
-        'logIn-from-header-left': true,
-        logIn_Active: false
-      },
-      isShow:true,
-      userName:'',
-      userPwd:""
-    }),
-    mounted:()=>{},
+    data () {
+      return{
+        classObject:{
+          'logIn-from-header-left': true,
+          logIn_Active: true
+        },
+        classObject02:{
+          'logIn-from-header-left': true,
+          logIn_Active: false
+        },
+        isShow:true,
+        userName:'',
+        userPwd:""
+      }
+    },
+    mounted:()=>{
+    },
     methods:{
       addActive:function(event){
         if(event==1){
@@ -65,15 +68,10 @@
         }
       },
       signIn:function () {
-        if(this.userName || this.userPwd){
+        if(this.userName && this.userPwd){
 //            发送请求测试登
-          let userInfo={
-            userName:this.userName,
-            userPwd:this.userPwd
-          };
-          console.log(userInfo);
-          utils.setCookie('userInfo',userInfo,7);
-//          location.href='/index';
+          utils.setCookie(this.userName,this.userPwd,7);
+          location.href='/index';
         }else{
           alert("姓名或者密码尚未输入");
         }
