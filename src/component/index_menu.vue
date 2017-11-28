@@ -1,13 +1,11 @@
 <template>
   <div class="index_Menu">
       <dl v-for="(value,key) in  items">
-        {{value.isActive }};
         <dt @click="openItem(key)" :class="value.isActive ? 'iTem_active' :''"><span><i class="iconfont icon-jisuanqi" style="font-size: 24px"></i></span><strong>{{value.title}}</strong><em><i class="iconfont icon-you" style="font-size: 14px"></i></em></dt>
-        <div class="menu_list">
-          <dd class="menu-list_item" v-for="(v,k) in value.Children">{{v.name}}</dd>
+        <div class="menu_list" :style="{height:value.height}">
+          <dd class="menu-list_item" v-for="(v,k) in value.Children" @click="checkItem($event,k)">{{v.name}}</dd>
         </div>
       </dl>
-
   </div>
 </template>
 <script>
@@ -34,33 +32,82 @@
               }
 
             ]
-          }
-        ]
+          },
+          {
+            title:"车辆管理",
+            classID:1,
+            isActive:false,
+            Children:[
+              {
+                name:"租借战车",
+                url:"mda"
+              },
+              {
+                name:"买卖战车",
+                url:"aon"
+              },
+              {
+                name:"归还战车",
+                url:"atai"
+              }
+
+            ]
+          },
+          {
+            title:"固定资产管理",
+            classID:1,
+            isActive:false,
+            Children:[
+              {
+                name:"卖屁股",
+                url:"mda"
+              },
+              {
+                name:"买屁股",
+                url:"aon"
+              },
+              {
+                name:"买卖屁股",
+                url:"atai"
+              }
+
+            ]
+          },
+        ],
+        addClass_item:''
       }
     },
 //    组件加载完毕之后
     mounted:function(){},
     methods:{
       openItem:function (key) {
-        console.log(key);
         var that=this;
         var newItmes=[];
-        this.items.map((index,value)=>{
+        this.items.map((value,index)=>{
               if(index == key){
-                console.log(value);
-//                value.isActive=true;
+                value.isActive=!value.isActive;
+                if(value.isActive==true)value.height=value.Children.length*40+'px';
+                else value.height=value.Children.length*0+'px';
                 newItmes.push(value)
               }else{
                 value.isActive=false;
+                value.height=value.Children.length*0+'px';
                 newItmes.push(value)
               }
         });
         this.items=newItmes;
+      },
+      checkItem:function (event) {
+        if(this.addClass_item){this.addClass_item.removeClass('itemContent');this.addClass_item=$(event.target);}
+        else this.addClass_item=$(event.target);
+        $(event.target).addClass('itemContent');
       }
     }
   }
 </script>
 <style scoped>
+
+
   .index_Menu{
     width: 260px;
     background-color: #fafafc;
@@ -110,19 +157,28 @@
   }
   .iTem_active em{
     transform:rotate(90deg);
+    transition: all .3s linear;
   }
   .iTem_active em i{
     color:#38adff;
   }
   .menu_list{
     width: 100%;
-
+    height: 0;
+    overflow: hidden;
+    transition: all .2s linear;
   }
   .menu-list_item{
     width: 100%;
     text-indent: 60px;
     height: 40px;
     line-height: 40px;
+    cursor: hand;
 
   }
+  .itemContent{
+    color: #38adff;
+  }
+
+
 </style>

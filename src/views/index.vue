@@ -117,12 +117,13 @@
       //      判断用户是否登录，如果登录
       let userInfo=utils.getCookie("userInfo");
       if(!userInfo){location.href="/logIn"};
+      var nowRouter=this.$route.path;
+      if(nowRouter=="/"){this.isMenu=true}else{this.isMenu=false};
     },
-    methods: {
+    methods:{
       getRouter:function () {
-        //      获取当前路由信息，决定加载哪个左侧栏
+        // 获取当前路由信息，决定加载哪个左侧栏
           var nowRouter=this.$route.path;
-          console.log(this.$route.path);
           if(nowRouter=="/"){this.isMenu=true}else{this.isMenu=false};
       }
     },
@@ -136,6 +137,5 @@
     watch:{
       "$route":"getRouter"
     }
-
   };
 </script>
