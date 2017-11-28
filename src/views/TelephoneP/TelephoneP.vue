@@ -1,6 +1,6 @@
 <template>
   <div>
-    我是成员管理
+    我是电话蒲
   </div>
 </template>
 <script>

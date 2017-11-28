@@ -1,18 +1,64 @@
 <template>
   <div class="index_Menu">
-      <dl>
-        <dt><span><i class="iconfont icon-jisuanqi" style="font-size: 24px"></i></span><strong>办公商品管理</strong><em></em></dt>
-        <div>
-          <dd></dd>
-          <dd></dd>
-          <dd></dd>
-          <dd></dd>
+      <dl v-for="(value,key) in  items">
+        {{value.isActive }};
+        <dt @click="openItem(key)" :class="value.isActive ? 'iTem_active' :''"><span><i class="iconfont icon-jisuanqi" style="font-size: 24px"></i></span><strong>{{value.title}}</strong><em><i class="iconfont icon-you" style="font-size: 14px"></i></em></dt>
+        <div class="menu_list">
+          <dd class="menu-list_item" v-for="(v,k) in value.Children">{{v.name}}</dd>
         </div>
       </dl>
 
   </div>
 </template>
 <script>
+  export default {
+    data(){
+      return {
+        items:[
+          {
+            title:"办公商品管理",
+            classID:1,
+            isActive:false,
+            Children:[
+              {
+                name:"月度需求申请",
+                url:"mda"
+              },
+              {
+                name:"办公用品领用申请",
+                url:"aon"
+              },
+              {
+                name:"临时急性物品申请",
+                url:"atai"
+              }
+
+            ]
+          }
+        ]
+      }
+    },
+//    组件加载完毕之后
+    mounted:function(){},
+    methods:{
+      openItem:function (key) {
+        console.log(key);
+        var that=this;
+        var newItmes=[];
+        this.items.map((index,value)=>{
+              if(index == key){
+                console.log(value);
+//                value.isActive=true;
+                newItmes.push(value)
+              }else{
+                value.isActive=false;
+                newItmes.push(value)
+              }
+        });
+        this.items=newItmes;
+      }
+    }
+  }
 </script>
 <style scoped>
   .index_Menu{
@@ -26,6 +72,7 @@
     width: 260px;
   }
   .index_Menu dl dt{
+    overflow: hidden;
     height: 65px;
     line-height: 65px;
     text-align: center;
@@ -52,5 +99,30 @@
     float: left;
     margin-left: 10px;
     font-weight: 500;
+  }
+  .index_Menu dl dt em{
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+  }
+  .iTem_active{
+    background-color: #dfedf9;
+  }
+  .iTem_active em{
+    transform:rotate(90deg);
+  }
+  .iTem_active em i{
+    color:#38adff;
+  }
+  .menu_list{
+    width: 100%;
+
+  }
+  .menu-list_item{
+    width: 100%;
+    text-indent: 60px;
+    height: 40px;
+    line-height: 40px;
+
   }
 </style>
