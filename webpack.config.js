@@ -1,6 +1,5 @@
 var path = require('path');
 var webpack = require('webpack');
-
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -52,7 +51,15 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
+    proxy: {
+      // 请求到 '/device' 下 的请求都会被代理到 target： http://debug.xxx.com 中
+      '/api.php/*': {
+        target: 'http://oa.xgyuanda.com',
+        secure: false, // 接受 运行在 https 上的服务
+        changeOrigin: true
+      }
+    }
   },
   performance: {
     hints: false
@@ -66,7 +73,8 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"production"'
+        NODE_ENV: '"production"',
+        API_ROOT: '"http://oa.xgyuanda.com/api.php"'
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
@@ -79,4 +87,8 @@ if (process.env.NODE_ENV === 'production') {
       minimize: true
     })
   ])
+}
+
+if (process.env.NODE_ENV === 'development') {
+
 }

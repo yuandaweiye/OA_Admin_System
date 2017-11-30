@@ -185,7 +185,6 @@
     },
     mounted () {
       this.bulidBwl()
-      console.log(8);
     },
     methods: {
       bulidBwl: function () {

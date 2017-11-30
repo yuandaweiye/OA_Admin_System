@@ -4,6 +4,11 @@
   </div>
 </template>
 <script>
+  export default{
+    mounted () {
+      this.$routerActive='telephoneP'
+    }
+  }
 </script>
 <style>
 </style>

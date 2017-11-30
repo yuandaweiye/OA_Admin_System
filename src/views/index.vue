@@ -84,6 +84,11 @@
     font-size: 24px;
   }
 
+  /*右侧样式*/
+  .index-content_right{
+    padding: 20px 30px;
+  }
+
 
   @media screen and (max-width: 640px) {
     nav{
@@ -99,6 +104,12 @@
     .goIndex i{
       font-size: 0px;
     }
+
+    /*右侧样式*/
+    .index-content_right{
+      padding: 5px 10px;
+    }
+
   }
   @media screen  and  (min-width: 640px) and (max-width: 992px) {
     nav{
@@ -110,6 +121,12 @@
     .goIndex i{
       font-size: 18px;
     }
+
+    /*右侧样式*/
+    .index-content_right{
+      padding: 15px 20px;
+    }
+
   }
 
 
@@ -117,7 +134,7 @@
 <template>
   <div class="index">
     <Header>
-      </Header>
+    </Header>
     <nav>
       <Row>
         <i-col :md="{span: 6,push:0}" :sm="{span: 6}" :xs="{span:6}">
@@ -126,16 +143,16 @@
           </div>
         </i-col>
         <i-col :md="{span: 3}" :sm="{span: 4 }" :xs="{span:4}">
-          <router-link to="/telephoneP" tag="li">电话簿</router-link>
+          <router-link to="/telephoneP" tag="li" :class="{'active':menuActive=='/telephoneP'}">电话簿</router-link>
         </i-col>
         <i-col :md="{span: 3}" :sm="{span: 4 }" :xs="{span:4}">
-          <router-link to="/tool" tag="li">工具台</router-link>
+          <router-link to="/tool" tag="li" :class="{'active':menuActive=='/tool'}">工具台</router-link>
         </i-col>
         <i-col :md="{span: 3}" :sm="{span: 4}" :xs="{span:5}">
-          <router-link to="/membermanage" tag="li">成员管理</router-link>
+          <router-link to="/membermanage" tag="li" :class="{'active':menuActive=='/membermanage'}">成员管理</router-link>
         </i-col>
         <i-col :md="{span: 3}" :sm="{span: 4 }" :xs="{span:5}">
-          <router-link to="/usercenter" tag="li">个人中心</router-link>
+          <router-link to="/usercenter" tag="li" :class="{'active':menuActive=='/usercenter'}">个人中心</router-link>
         </i-col>
       </Row>
     </nav>
@@ -154,24 +171,29 @@
         </i-col>
       </Row>
     </div>
-
+    <Spin fix v-show="routerLoad"></Spin>
   </div>
+
 </template>
-<script>
+<script type="text/ecmascript-6">
   //导入获取cookie方法，判断用户是否登录
   import  utils  from '../libs/util';
   import { Button,Table } from 'iview';
-  import header from '../component/header.vue';
+  import Header from '../component/header.vue';
   import  indexLeft from '../component/indexLeft.vue';
   import  indexMenu from  '../component/index_menu.vue';
   export default {
 //    定义全局变量
       data(){
         return{
-          isMenu:true
+          isMenu:true,
+          menuActive:'',
+          routerLoad:this.$routerLoad.routerLoad
         }
       },
 //        组件加载完闭之后
+    created() {
+      },
     mounted:function () {
       //      判断用户是否登录，如果登录
       let userInfo=utils.getCookie("oa_userInfo");
@@ -182,20 +204,21 @@
       getRouter:function () {
         //      获取当前路由信息，决定加载哪个左侧栏
           var nowRouter=this.$route.path;
-          if(nowRouter=="/"){this.isMenu=true}else{this.isMenu=false};
+          if(nowRouter=="/" || nowRouter=="/index" ){this.isMenu=true;}else{this.isMenu=false;};
+        this.menuActive=this.$route.path
       }
     },
     components:{
-      "Header":header,
-      "Button":Button,
-      "Table":Table,
+      "Header":Header,
+      "button":Button,
+      "table":Table,
       "indexLeft":indexLeft,
       "indexMenu":indexMenu
     },
 //    监听路由的变化
-    watch:{
-      "$route":"getRouter"
-    }
+    watch: {
+      "$route": "getRouter"
 
+    }
   };
 </script>

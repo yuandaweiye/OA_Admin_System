@@ -1,7 +1,6 @@
 //const Cookies=require('js-cookie');
 const Base64 = require('js-base64').Base64;
 let util = new Object();
-console.log($.cookie("oa_users"));
 util.title = function(title) {
   title = title ? title + ' - Home' : 'iView project';
   window.document.title = title;
