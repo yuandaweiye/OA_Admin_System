@@ -1,14 +1,17 @@
 <template>
-  <div>
-    我是电话蒲
+  <div class="TelephoneP_content">
+    <table-List></table-List>
   </div>
 </template>
 <script>
+  import  tableList from  '../../component/tablelist.vue';
   export default{
-    mounted () {
-      this.$routerActive='telephoneP'
-    }
+    mounted () {},
+    components:{
+      "tableList":tableList,
+    },
   }
 </script>
 <style>
+  .TelephoneP_content{}
 </style>

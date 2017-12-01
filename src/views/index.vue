@@ -210,15 +210,12 @@
     },
     components:{
       "Header":Header,
-      "button":Button,
-      "table":Table,
       "indexLeft":indexLeft,
       "indexMenu":indexMenu
     },
 //    监听路由的变化
     watch: {
       "$route": "getRouter"
-
     }
   };
 </script>

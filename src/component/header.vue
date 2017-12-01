@@ -75,7 +75,6 @@
     mounted () {},
     methods :{
       signOut () {
-
         window.location.href='/login'
       }
     }
