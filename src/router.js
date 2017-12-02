@@ -8,6 +8,7 @@ import Membermanage from './views/Membermanage/Membermanage.vue';
 import TelephoneP from './views/TelephoneP/TelephoneP.vue';
 import Tool from  './views/Tool/Tool.vue';
 import Usercenter from './views/UserCenter/user.vue'
+import MonthApply from  './views/office/monthApply/monthApply.vue'
 
 Vue.use(Router)
 
@@ -18,6 +19,7 @@ const routers = [
     {path:'/telephoneP',name:'TelephoneP',component:TelephoneP},
     {path:'/tool',name:'Tool',component:Tool},
     {path:'/usercenter',name:'Usercenter',component:Usercenter},
+    {path:'/office/monthApply',name:'monthApply',component:MonthApply}
   ]},
   { path: '/login',name:'logIn',component:logIn}
 ];

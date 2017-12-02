@@ -3,15 +3,16 @@
       <dl v-for="(value,key) in  items">
         <dt @click="openItem(key)" :class="value.isActive ? 'iTem_active' :''"><span><i class="iconfont icon-jisuanqi" style="font-size: 24px"></i></span><strong>{{value.title}}</strong><em><i class="iconfont icon-you" style="font-size: 14px"></i></em></dt>
         <div class="menu_list" :style="{height:value.height}">
-          <dd class="menu-list_item" v-for="(v,k) in value.Children" @click="checkItem($event,k)">{{v.name}}</dd>
+          <dd class="menu-list_item" v-for="(v,k) in value.Children" @click="checkItem($event,k)" :class="{'active':menuActive==v.url}"><router-link :to="v.url">{{v.name}}</router-link></dd>
         </div>
       </dl>
   </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
   export default {
     data(){
       return {
+        menuActive:'',
         items:[
           {
             title:"办公商品管理",
@@ -20,7 +21,7 @@
             Children:[
               {
                 name:"月度需求申请",
-                url:"mda"
+                url:"/office/monthApply"
               },
               {
                 name:"办公用品领用申请",
@@ -77,8 +78,13 @@
         addClass_item:''
       }
     },
+    created (){
+      this.getRouter()
+    },
 //    组件加载完毕之后
-    mounted:function(){},
+    mounted:function(){
+
+    },
     methods:{
       openItem:function (key) {
         var that=this;
@@ -101,7 +107,14 @@
         if(this.addClass_item){this.addClass_item.removeClass('itemContent');this.addClass_item=$(event.target);}
         else this.addClass_item=$(event.target);
         $(event.target).addClass('itemContent');
+      },
+      getRouter:function () {
+        //      获取当前路由信息，决定加载哪个左侧栏
+        this.menuActive=this.$route.path
       }
+    },
+    watch: {
+      "$route": "getRouter"
     }
   }
 </script>
@@ -174,6 +187,12 @@
     line-height: 40px;
     cursor: hand;
 
+  }
+  .menu-list_item a{
+    color: #495060;
+  }
+  .active a{
+    color: #C53929;
   }
   .itemContent{
     color: #38adff;
