@@ -3,7 +3,7 @@
       <!--表格头部-->
         <div class="tebleview_searchBar">
           <div class="searchBar_title">
-            部门成员
+            {{headerTitles}}
           </div>
           <div class="tebleview_from">
               <input type="text" maxlength="16" placeholder="输入员工姓名...">
@@ -11,11 +11,11 @@
           </div>
         </div>
       <!--表格体-->
-      <Table stripe  border :columns="ths" :data="tableData"></Table>
+      <Table stripe  border :columns="theads" :data="tableData"></Table>
 
 
-      <div class="classPage">
-        <Page :total="total"></Page>
+      <div class="classPage" v-if="showPageFs">
+        <Page :total="PageInfos"></Page>
       </div>
 
 
@@ -24,113 +24,21 @@
 <script>
   import { Table,Page} from 'iview'
   export default {
+    props:['thead','tData','PageInfo','showSearch','headerTitle','showPageF'],
     data(){
       return {
-        ths:[
-          {
-            title:"序号",
-            key:'index'
-          },
-          {
-            title:"姓名",
-            key:'name'
-          },
-          {
-            title:"职位",
-            key:'position'
-          },
-          {
-            title:"手机号",
-            key:'phone'
-          },
-          {
-            title:"QQ",
-            key:'qqnumber'
-          },
-          {
-            title:"Email",
-            key:'email'
-          },
-        ],
-        tableData:[
-          {
-            index:2,
-            name:'王鹏',
-            position:'前端专员',
-            phone:187215231,
-            qqnumber:118396308,
-            email:123123123
-          },
-          {
-            index:3,
-            name:'王鹏',
-            position:'前端专员',
-            phone:187215231,
-            qqnumber:118396308,
-            email:123123123
-          },
-          {
-            index:4,
-            name:'王鹏',
-            position:'前端专员',
-            phone:187215231,
-            qqnumber:118396308,
-            email:123123123
-          },
-          {
-            index:5,
-            name:'王鹏',
-            position:'前端专员',
-            phone:187215231,
-            qqnumber:118396308,
-            email:123123123
-          },
-          {
-            index:6,
-            name:'王鹏',
-            position:'前端专员',
-            phone:187215231,
-            qqnumber:118396308,
-            email:123123123
-          },
-          {
-            index:7,
-            name:'王鹏',
-            position:'前端专员',
-            phone:187215231,
-            qqnumber:118396308,
-            email:123123123
-          },
-          {
-            index:8,
-            name:'王鹏',
-            position:'前端专员',
-            phone:187215231,
-            qqnumber:118396308,
-            email:123123123
-          },
-          {
-            index:9,
-            name:'王鹏',
-            position:'前端专员',
-            phone:187215231,
-            qqnumber:118396308,
-            email:123123123
-          },
-          {
-            index:10,
-            name:'王鹏',
-            position:'前端专员',
-            phone:187215231,
-            qqnumber:118396308,
-            email:123123123
-          }
-        ],
-        total:100
+        theads:this.thead,
+        tableData:this.tData,
+        showSearch:this.showSearch ||false,
+        headerTitles:this.headerTitle ||'',
+        PageInfos:this.PageInfo || 1 ,
+        showPageFs:this.showPageF
       }
     },
 
-
+    mounted:function(){
+      console.log(this.thead);
+    },
 
     components:{}
   }

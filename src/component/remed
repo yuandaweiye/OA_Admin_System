@@ -1,0 +1,7 @@
+tablelist:组件使用声明
+thead:表头
+tData：表数据
+PageInfo：分页数据
+showSearch：是否需要收索功能
+headerTitle：表头信息
+showPageF:是否需要分页器
