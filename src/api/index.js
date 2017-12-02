@@ -39,7 +39,7 @@ function apiAxios (method, url, params, success, error) {
     url:url,
     data: method === 'POST' || method === 'PUT' ? qs.stringify(params) : null,
     params: method === 'GET' || method === 'DELETE' ? params : null,
-    baseURI: root,
+    timeout: 10000,
     headers: {'X-Requested-With': 'XMLHttpRequest'},
     withCredentials: false
   })
@@ -51,14 +51,12 @@ function apiAxios (method, url, params, success, error) {
       } else {
         if (error) {
           error(res.data)
-        } else {
-          console.log('error：' + JSON.stringify(res.data))
         }
       }
     })
     .catch(function (err) {
       if (err) {
-        console.log('api error, HTTP CODE: ' + err)
+        error(err)
       }
     })
 }
