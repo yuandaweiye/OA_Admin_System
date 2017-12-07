@@ -14,13 +14,20 @@ Vue.use(Router)
 
 const routers = [
   { path: '/',name:'index',redirect: '/index',component:Index,children:[
+    //首页
     {path:'/index',name:'home',component:Home},
+    //成员管理
     {path:'/membermanage',name:'Membermanage',component:Membermanage},
+    //电话蒲管理
     {path:'/telephoneP',name:'TelephoneP',component:TelephoneP},
+    //工具栏管理
     {path:'/tool',name:'Tool',component:Tool},
+    //用户中心
     {path:'/usercenter',name:'Usercenter',component:Usercenter},
+    //月度申请需求
     {path:'/office/monthApply',name:'monthApply',component:MonthApply}
   ]},
+  //登录页面
   { path: '/login',name:'logIn',component:logIn}
 ];
 

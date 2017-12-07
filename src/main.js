@@ -38,8 +38,7 @@ iView.LoadingBar.config({
 
 router.beforeEach((to, from, next) => {
 
-  this.$routerLoad=true
-
+  this.$routerLoad=true;
   iView.LoadingBar.start();
   console.log(this.$routerLoad)
   next();
