@@ -126,7 +126,6 @@
     .index-content_right{
       padding: 15px 20px;
     }
-
   }
 
 
