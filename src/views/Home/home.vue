@@ -1,27 +1,4 @@
-<template>
-  <div>
-    <div class="swiper-container" id="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="../../libs/images/notic1.png"/>
-        </div>
-        <div class="swiper-slide">
-          <img src="../../libs/images/notic1.png"/>
-        </div>
-        <div class="swiper-slide">
-          <img src="../../libs/images/notic1.png"/>
-        </div>
-      </div>
-      <!-- Add Pagination -->
-      <div class="swiper-pagination"></div>
-      <!-- Add Button-->
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-    </div>
 
-
-  </div>
-</template>
 <style>
   .swiper-container{
     overflow: hidden;
@@ -67,6 +44,54 @@
     display: block;
   }
 
+  /*快捷操作*/
+  .quickOption{
+
+  }
+  .quickOption .quickOption_title{
+    padding: 10px 0;
+  }
+  .quickOption .quickOption_title h1{
+    font-size: 16px;
+  }
+  .quickOption .quickOption_title span{
+    font-size: 14px;
+    cursor: pointer;
+    color: #787878;
+  }
+  .quickOption .quickOption_title span:hover{
+    color: #C53929;
+  }
+  .quickOption .quickOption_title span i{
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  .quickOption .quickOption_card .card{
+    cursor: pointer;
+  }
+  .quickOption .quickOption_card h3{
+    color: #787878;;
+  }
+  .quickOption .quickOption_card .card h3:hover{
+    color: #C53929;
+  }
+  .quickOption .quickOption_card span{
+    margin-left: 5px;
+  }
+  .quickOption .quickOption_card .icon{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 30px;
+    border-radius: 5px;
+    color: #fff;
+  }
+  .quickOption .quickOption_card .icon_office{
+    background: #F7B55E;
+  }
+
   @media screen and (max-width: 640px) {
     .swiper-pagination-bullet{
       width: 8px;
@@ -75,6 +100,12 @@
     }
     .swiper-button-next, .swiper-button-prev{
       display: none;
+    }
+    .quickOption .quickOption_card .icon{
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      font-size: 18px;
     }
   }
   @media screen  and  (min-width: 640px) and (max-width: 992px) {
@@ -86,8 +117,57 @@
     .swiper-button-next, .swiper-button-prev{
       display: none;
     }
+    .quickOption .quickOption_card .icon{
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      font-size: 26px;
+    }
   }
 </style>
+<template>
+  <!--swiper-->
+  <div>
+    <div class="swiper-container" id="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="../../libs/images/notic1.png"/>
+        </div>
+        <div class="swiper-slide">
+          <img src="../../libs/images/notic1.png"/>
+        </div>
+        <div class="swiper-slide">
+          <img src="../../libs/images/notic1.png"/>
+        </div>
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+      <!-- Add Button-->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+    <!--快捷操作-->
+    <div class="quickOption">
+      <div class="quickOption_title clearfiex">
+        <h1 class="fl">快捷操作</h1>
+        <span class="fr"><Icon type="gear-b"></Icon>修改</span>
+      </div>
+      <div class="quickOption_card">
+        <Row>
+          <Col :md="6" :sm="8" :xs="12">
+            <Card>
+              <div class="card" style="text-align:center">
+                <router-link to="/office/monthApply" >
+                <h3><span class="icon icon_office"><Icon type="ios-calculator"></Icon></span> 月度需求</h3>
+                </router-link>
+              </div>
+            </Card>
+          </Col>
+        </Row>
+      </div>
+    </div>
+  </div>
+</template>
 <script type="text/ecmascript-6">
   import Swiper from 'swiper';
   import 'swiper/dist/css/swiper.min.css'

@@ -13,6 +13,7 @@ Vue.use(iView);
 //将调取接口方法设为全局
 Vue.prototype.$api=Api
 
+
 //路由加载全局变量
 Vue.prototype.$routerActive=''
 Vue.prototype.$routerLoad=RouterLoad

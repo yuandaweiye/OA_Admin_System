@@ -49,6 +49,9 @@ body{
   content: '';
 }
 
+.red{
+  color:  #C53929 !important;
+}
 
 .width-260{
   width: 260px !important;

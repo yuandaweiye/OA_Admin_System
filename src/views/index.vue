@@ -139,7 +139,7 @@
       <Row>
         <i-col :md="{span: 6,push:0}" :sm="{span: 6}" :xs="{span:6}">
           <div class="goIndex" >
-            <router-link to="/" tag="p"><Icon type="ios-home" v-show="!isMenu"></Icon><span class="padding-1-5" v-show="!isMenu">返回首页</span></router-link>
+            <router-link to="/" tag="p"><Icon type="ios-home" v-show="!isMenu"></Icon><span class="padding-1-5" v-show="this.menuActive!='/' && this.menuActive!='/index'">返回首页</span></router-link>
           </div>
         </i-col>
         <i-col :md="{span: 3}" :sm="{span: 4 }" :xs="{span:4}">
@@ -177,16 +177,22 @@
 </template>
 <script type="text/ecmascript-6">
   //导入获取cookie方法，判断用户是否登录
+  import Vue from 'vue'
   import  utils  from '../libs/util';
   import { Button,Table } from 'iview';
   import Header from '../component/header.vue';
   import  indexLeft from '../component/indexLeft.vue';
   import  indexMenu from  '../component/index_menu.vue';
   export default {
-//    定义全局变量
       data(){
         return{
+          user:{
+            name:'',
+            position:'职员',
+            department:''
+          },
           isMenu:true,
+          index:'',
           menuActive:'',
           routerLoad:this.$routerLoad.routerLoad
         }
@@ -197,14 +203,27 @@
     mounted:function () {
       //      判断用户是否登录，如果登录
       let userInfo=utils.getCookie("oa_userInfo");
-      if(!userInfo){location.href="/login"};
+      if(!userInfo){
+        location.href="/login"
+      }else{
+        this.$api.post('/api.php/index/login ',{"name":userInfo.username,"pass":userInfo.password},r=>{
+          if(r.status===1){
+            console.log(r)
+         //   定义全局变量
+            Vue.prototype.$userInfo=r.data;
+          }else{
+            window.location.href='/login/'
+          }
+        })
+        console.log(userInfo)
+      }
       this.getRouter()
     },
     methods: {
       getRouter:function () {
         //      获取当前路由信息，决定加载哪个左侧栏
           var nowRouter=this.$route.path;
-          if(nowRouter=="/" || nowRouter=="/index" ){this.isMenu=true;}else{this.isMenu=false;};
+          if(nowRouter=="/" || nowRouter=="/index" || nowRouter=="/usercenter" || nowRouter=="/membermanage" || nowRouter=="/telephoneP" || nowRouter=="/tool" ){this.isMenu=true;}else{this.isMenu=false;};
         this.menuActive=this.$route.path
       }
     },

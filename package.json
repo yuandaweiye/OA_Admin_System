@@ -10,7 +10,8 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "vue": "^2.4.4"
+    "vue": "^2.5.9",
+    "vue-template-compiler": "^2.5.9"
   },
   "browserslist": [
     "> 1%",
@@ -18,7 +19,7 @@
     "not ie <= 8"
   ],
   "devDependencies": {
-    "axios":"0.17.1",
+    "axios": "0.17.1",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-import": "^1.6.2",

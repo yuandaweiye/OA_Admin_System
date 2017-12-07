@@ -25,7 +25,7 @@
               },
               {
                 name:"办公用品领用申请",
-                url:"aon"
+                url:"/office/useApply"
               },
               {
                 name:"临时急性物品申请",
