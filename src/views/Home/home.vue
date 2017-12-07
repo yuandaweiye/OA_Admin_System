@@ -107,6 +107,9 @@
       line-height: 20px;
       font-size: 18px;
     }
+    .swiper-container:hover .swiper-button-prev,.swiper-container:hover .swiper-button-next{
+      display: none;
+    }
   }
   @media screen  and  (min-width: 640px) and (max-width: 992px) {
     .swiper-pagination-bullet{
@@ -122,6 +125,9 @@
       height: 30px;
       line-height: 30px;
       font-size: 26px;
+    }
+    .swiper-container:hover .swiper-button-prev,.swiper-container:hover .swiper-button-next{
+      display: none;
     }
   }
 </style>
