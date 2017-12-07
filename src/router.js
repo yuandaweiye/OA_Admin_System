@@ -32,7 +32,7 @@ const routers = [
     {path:'/office/monthApply',name:'monthApply',component:MonthApply}
   ]},
   { path: '/login',name:'logIn',component:logIn},
-  {path:'*',name:'404',component:Other}
+  {path:'*',name:'404',component:Other},
   //登录页面
   { path: '/login',name:'logIn',component:logIn}
 ];
