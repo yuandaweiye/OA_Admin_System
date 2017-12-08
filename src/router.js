@@ -13,6 +13,8 @@ import UseApply from './views/office/useApply/useApply.vue';
 import AcuteApply from './views/office/acuteApply/acuteApply.vue';
 import Other from './views/404/404.vue';
 
+
+
 Vue.use(Router);
 
 const routers = [
@@ -27,11 +29,19 @@ const routers = [
     {path:'/tool',name:'Tool',component:Tool},
     //用户中心
     {path:'/usercenter',name:'Usercenter',component:Usercenter},
+    //月度申请-------------------------office---------------------------------------------
     {path:'/office/monthApply',name:'monthApply',component:MonthApply},
+    //用户申请
     {path:'/office/useApply',name:'useApply',component:UseApply},
+    //紧急申请
     {path:'/office/acuteApply',name:'acuteApply',component:AcuteApply},
     //月度申请需求
-    {path:'/office/monthApply',name:'monthApply',component:MonthApply}
+    {path:'/office/monthApply',name:'monthApply',component:MonthApply},
+
+    //月度申请-------------------------office---------------------------------------------
+
+
+
   ]},
   { path: '/login',name:'logIn',component:logIn},
   {path:'*',name:'404',component:Other},

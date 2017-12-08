@@ -36,41 +36,78 @@
             ]
           },
           {
-            title:"车辆管理",
-            classID:1,
+            title:"主页",
+            classID:2,
+            type:'main',
             isActive:false,
             Children:[
               {
-                name:"租借战车",
-                url:"mda"
+                name:"所有申请",
+                iconfont:'',
+                url:"main/allApplications"
               },
               {
-                name:"买卖战车",
-                url:"aon"
+                name:"申请种类",
+                iconfont:'',
+                url:"main/applicationClass ",
               },
               {
-                name:"归还战车",
-                url:"atai"
-              }
-
+                name:"报销申请",
+                iconfont:'',
+                url:"main/ApplicationReim ",
+              },
+              {
+                name:"审批进度",
+                iconfont:'',
+                url:"main/ApprovalProgress",
+              },
+              {
+                name:"修改审批",
+                iconfont:'',
+                url:"main/revisionApproval",
+              },
+              {
+                name:"急性审批进度",
+                iconfont:'',
+                url:"main/acuteAP ",
+              },
+              {
+                name:"固定审批进度",
+                iconfont:'',
+                url:"main/fixedAP",
+              },
+              {
+                name:"派车申请进度",
+                iconfont:'',
+                url:"main/sacAP",
+              },
+              {
+                name:"用户审批信息",
+                iconfont:'',
+                url:"main/userAppInfo",
+              },
             ]
           },
           {
-            title:"固定资产管理",
-            classID:1,
+            title:"系统设置",
+            classID:3,
+            type:'systemSet',
             isActive:false,
             Children:[
               {
-                name:"卖屁股",
-                url:"mda"
+                name:"网站设置",
+                iconfont:'',
+                url:"systemSet/webSettings"
               },
               {
-                name:"买屁股",
-                url:"aon"
+                name:"后台菜单",
+                iconfont:'',
+                url:"systemSet/backstageMeun"
               },
               {
-                name:"买卖屁股",
-                url:"atai"
+                name:"新增菜单",
+                iconfont:'',
+                url:"systemSet/addMeun"
               }
 
             ]

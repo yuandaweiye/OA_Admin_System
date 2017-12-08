@@ -1,0 +1,9 @@
+<template>
+  <div>
+    急性物品申请
+  </div>
+</template>
+<script>
+</script>
+<style>
+</style>

@@ -1,0 +1,9 @@
+<template>
+        <div>
+            固定用户申请
+        </div>
+</template>
+<script>
+</script>
+<style>
+</style>

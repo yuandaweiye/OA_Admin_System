@@ -1,0 +1,9 @@
+<template>
+  <div>
+      申请种类
+  </div>
+</template>
+<script>
+</script>
+<style>
+</style>
