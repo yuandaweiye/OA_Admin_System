@@ -1,6 +1,5 @@
 <template>
     <div class="tool_content">
-
       <module-Card></module-Card>
     </div>
 </template>

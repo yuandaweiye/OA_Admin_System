@@ -36,5 +36,4 @@ const routers = [
   //登录页面
   { path: '/login',name:'logIn',component:logIn}
 ];
-
-export default routers
+export default routers;
