@@ -1,6 +1,6 @@
 <template>
   <div class="index_Menu">
-      <dl v-for="(value,key) in  items">
+      <dl v-for="(value,key) in  items" v-show="menuActive.indexOf(value.type)>=0">
         <dt @click="openItem(key)" :class="value.isActive ? 'iTem_active' :''"><span><i class="iconfont icon-jisuanqi" style="font-size: 24px"></i></span><strong>{{value.title}}</strong><em><i class="iconfont icon-you" style="font-size: 14px"></i></em></dt>
         <div class="menu_list" :style="{height:value.height}">
           <dd class="menu-list_item" v-for="(v,k) in value.Children" @click="checkItem($event,k)" :class="{'active':menuActive==v.url}"><router-link :to="v.url">{{v.name}}</router-link></dd>
@@ -18,6 +18,7 @@
             title:"办公商品管理",
             classID:1,
             isActive:false,
+            type:'office',
             Children:[
               {
                 name:"月度需求申请",
@@ -29,7 +30,7 @@
               },
               {
                 name:"临时急性物品申请",
-                url:"atai"
+                url:"/office/acuteApply"
               }
 
             ]
@@ -79,11 +80,14 @@
       }
     },
     created (){
-      this.getRouter()
+      this.getRouter();
     },
 //    组件加载完毕之后
     mounted:function(){
-
+      for (var i=0;i<this.items.length;i++)
+        if(this.menuActive.indexOf(this.items[i].type)>=0){
+          this.openItem(i)
+        }
     },
     methods:{
       openItem:function (key) {

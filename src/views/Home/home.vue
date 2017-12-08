@@ -31,7 +31,6 @@
   .swiper-button-prev{
     background: url("../../libs/images/swiper_button.png") no-repeat left center;
     background-position: 0,0;
-
   }
   .swiper-button-next{
     background: url("../../libs/images/swiper_button.png") no-repeat left center;
@@ -45,6 +44,9 @@
   }
 
   /*快捷操作*/
+  .ivu-card-body{
+    padding:16px 0;
+  }
   .quickOption{
 
   }
@@ -80,11 +82,11 @@
   }
   .quickOption .quickOption_card .icon{
     display: inline-block;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     text-align: center;
-    line-height: 40px;
-    font-size: 30px;
+    line-height: 30px;
+    font-size: 26px;
     border-radius: 5px;
     color: #fff;
   }
@@ -159,12 +161,31 @@
         <span class="fr"><Icon type="gear-b"></Icon>修改</span>
       </div>
       <div class="quickOption_card">
-        <Row>
+        <Row :gutter="30">
+          <Col :md="6" :sm="8" :xs="12">
+            <Card>
+              <div class="card" style="text-align:center;padding: 0">
+                <router-link to="/office/monthApply" >
+                   <h3><span class="icon icon_office"><Icon type="ios-calculator"></Icon></span> 月度需求</h3>
+                </router-link>
+              </div>
+            </Card>
+          </Col>
           <Col :md="6" :sm="8" :xs="12">
             <Card>
               <div class="card" style="text-align:center">
-                <router-link to="/office/monthApply" >
-                <h3><span class="icon icon_office"><Icon type="ios-calculator"></Icon></span> 月度需求</h3>
+                <router-link to="/office/useApply" >
+                   <h3><span class="icon icon_office"><Icon type="ios-calculator"></Icon></span> 办公领用</h3>
+                </router-link>
+              </div>
+            </Card>
+          </Col>
+          </Col>
+          <Col :md="6" :sm="8" :xs="12">
+            <Card>
+              <div class="card" style="text-align:center">
+                <router-link to="/office/acuteApply" >
+                    <h3><span class="icon icon_office"><Icon type="ios-calculator"></Icon></span> 急性申请</h3>
                 </router-link>
               </div>
             </Card>
