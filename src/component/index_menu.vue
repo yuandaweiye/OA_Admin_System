@@ -44,47 +44,42 @@
               {
                 name:"所有申请",
                 iconfont:'',
-                url:"main/allApplications"
+                url:"/main/allApplications"
               },
               {
                 name:"申请种类",
                 iconfont:'',
-                url:"main/applicationClass ",
+                url:"/main/applicationClass",
               },
               {
                 name:"报销申请",
                 iconfont:'',
-                url:"main/ApplicationReim ",
-              },
-              {
-                name:"审批进度",
-                iconfont:'',
-                url:"main/ApprovalProgress",
+                url:"/main/ApplicationReim",
               },
               {
                 name:"修改审批",
                 iconfont:'',
-                url:"main/revisionApproval",
+                url:"/main/revisionApproval",
               },
               {
                 name:"急性审批进度",
                 iconfont:'',
-                url:"main/acuteAP ",
+                url:"/main/acuteAP",
               },
               {
                 name:"固定审批进度",
                 iconfont:'',
-                url:"main/fixedAP",
+                url:"/main/fixedAP",
               },
               {
                 name:"派车申请进度",
                 iconfont:'',
-                url:"main/sacAP",
+                url:"/main/sacAP",
               },
               {
                 name:"用户审批信息",
                 iconfont:'',
-                url:"main/userAppInfo",
+                url:"/main/userAppInfo",
               },
             ]
           },
@@ -97,17 +92,17 @@
               {
                 name:"网站设置",
                 iconfont:'',
-                url:"systemSet/webSettings"
+                url:"/systemSet/webSettings"
               },
               {
                 name:"后台菜单",
                 iconfont:'',
-                url:"systemSet/backstageMeun"
+                url:"/systemSet/backstageMeun"
               },
               {
                 name:"新增菜单",
                 iconfont:'',
-                url:"systemSet/addMeun"
+                url:"/systemSet/addMeun"
               }
 
             ]

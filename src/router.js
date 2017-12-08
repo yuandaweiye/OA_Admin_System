@@ -8,9 +8,22 @@ import Membermanage from './views/Membermanage/Membermanage.vue';
 import TelephoneP from './views/TelephoneP/TelephoneP.vue';
 import Tool from  './views/Tool/Tool.vue';
 import Usercenter from './views/UserCenter/user.vue';
+//月度申请-------------------------office---------------------------------------------
 import MonthApply from  './views/office/monthApply/monthApply.vue';
 import UseApply from './views/office/useApply/useApply.vue';
 import AcuteApply from './views/office/acuteApply/acuteApply.vue';
+//主页--------------------------------main---------------------------------------------
+import AcuteAP from './views/Main/acuteAP.vue';
+import AllApplications from './views/Main/allApplications.vue';
+import ApplicationClass from './views/Main/applicationClass.vue'
+import ApplicationReim from './views/Main/applicationReim.vue';
+import FixedAP from './views/Main/fixedAP.vue';
+import RevisionApproval from './views/Main/revisionApproval.vue';
+import SacAP from './views/Main/sacAP.vue';
+import UserAppInfo from './views/Main/userAppInfo.vue';
+
+
+//404------------------------------------404--------------------------------------------
 import Other from './views/404/404.vue';
 
 
@@ -38,10 +51,23 @@ const routers = [
     //月度申请需求
     {path:'/office/monthApply',name:'monthApply',component:MonthApply},
 
-    //月度申请-------------------------office---------------------------------------------
-
-
-
+    //主页-------------------------main---------------------------------------------------
+      //急性物品申请
+    {path:'/main/acuteAP',name:'acuteAP',component:AcuteAP},
+      //所有申请
+    {path:'/main/allApplications',name:'allApplications',component:AllApplications},
+      //申请分类
+    {path:'/main/applicationClass',name:'applicationClass',component:ApplicationClass},
+      //报销申请进度
+    {path:'/main/applicationReim',name:'applicationReim',component:ApplicationReim},
+      //固定用品申请
+    {path:'/main/fixedAP',name:'fixedAP',component:FixedAP},
+      //审批修改
+    {path:'/main/revisionApproval',name:'revisionApproval',component:RevisionApproval},
+      //用车申请
+    {path:'/main/sacAP',name:'sacAP',component:SacAP},
+      //用户申请信息
+    {path:'/main/userAppInfo',name:'userAppInfo',component:UserAppInfo},
   ]},
   { path: '/login',name:'logIn',component:logIn},
   {path:'*',name:'404',component:Other},
