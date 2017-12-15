@@ -94,7 +94,8 @@
     created (){
       this.getRouter();
     },
-//    组件加载完毕之后
+		// 在dom渲染之前执行
+		// 根据路由里面的地址，判断显示那个模块，根据item里面的type进行判断
     mounted:function(){
       for (var i=0;i<this.items.length;i++)
         if(this.menuActive.indexOf(this.items[i].type)>=0){
@@ -120,15 +121,17 @@
         this.items=newItmes;
       },
       checkItem:function (event) {
-        if(this.addClass_item){this.addClass_item.removeClass('itemContent');this.addClass_item=$(event.target);}
-        else this.addClass_item=$(event.target);
-        $(event.target).addClass('itemContent');
-      },
-      getRouter:function () {
-        //      获取当前路由信息，决定加载哪个左侧栏
-        this.menuActive=this.$route.path
-      }
+				if(this.addClass_item){
+					this.addClass_item.removeClass('itemContent');this.addClass_item=$(event.target);
+				}else this.addClass_item=$(event.target);
+	        $(event.target).addClass('itemContent');
+	      },
+	      getRouter:function () {
+	        //      获取当前路由信息，决定加载哪个左侧栏
+	        this.menuActive=this.$route.path
+	      }
     },
+    // 监听路由的变化，使用getRouter方法监听路由变化
     watch: {
       "$route": "getRouter"
     }
