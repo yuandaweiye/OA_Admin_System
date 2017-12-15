@@ -36,6 +36,18 @@
             ]
           },
           {
+            title:"报销管理",
+            classID:1,
+            isActive:false,
+            type:'Reim',
+            Children:[
+              {
+                name:"报销费用申请",
+                url:"/Reim/appReim"
+              }
+            ]
+          },
+          {
             title:"车辆管理",
             classID:1,
             isActive:false,

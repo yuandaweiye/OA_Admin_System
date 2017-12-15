@@ -11,6 +11,7 @@ import Usercenter from './views/UserCenter/user.vue';
 import MonthApply from  './views/office/monthApply/monthApply.vue';
 import UseApply from './views/office/useApply/useApply.vue';
 import AcuteApply from './views/office/acuteApply/acuteApply.vue';
+import AppReim from './views/Reim/appReim/appReim.vue';
 import Other from './views/404/404.vue';
 
 Vue.use(Router);
@@ -30,6 +31,7 @@ const routers = [
     {path:'/office/monthApply',name:'monthApply',component:MonthApply},
     {path:'/office/useApply',name:'useApply',component:UseApply},
     {path:'/office/acuteApply',name:'acuteApply',component:AcuteApply},
+    {path:'/Reim/appReim',name:'appReim',component:AppReim},
   ]},
   { path: '/login',name:'logIn',component:logIn},
   {path:'*',name:'404',component:Other}

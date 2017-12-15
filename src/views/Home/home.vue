@@ -190,6 +190,15 @@
               </div>
             </Card>
           </Col>
+          <Col :md="6" :sm="8" :xs="12">
+            <Card>
+              <div class="card" style="text-align:center">
+                <router-link to="/Reim/appReim" >
+                    <h3><span class="icon icon_office"><Icon type="ios-calculator"></Icon></span> 报销管理</h3>
+                </router-link>
+              </div>
+            </Card>
+          </Col>
         </Row>
       </div>
     </div>
