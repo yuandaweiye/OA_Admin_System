@@ -6,6 +6,10 @@
 }
   .error_top{
     text-align: center;
+    background: #fff;
+  }
+  .error_top .ivu-card-head{
+    background: #fff;
   }
   .error_img{
     text-align: center;

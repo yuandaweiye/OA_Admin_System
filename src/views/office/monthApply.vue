@@ -57,17 +57,6 @@
 <template>
   <div class="officeApply">
     <!--tab-->
-    <Row style="padding:0px 10px;margin-bottom: 5px">
-      <i-col :sm="6" :xs="12" style="padding:5px 0px">
-        显示边框 <i-switch v-model="showBorder" style="margin-right: 5px"></i-switch>
-      </i-col>
-      <i-col :sm="6" :xs="12" style="padding:5px 0px">
-        显示斑马纹 <i-switch v-model="showStripe" style="margin-right: 5px"></i-switch>
-      </i-col>
-      <i-col :sm="6" :xs="12" style="padding:5px 0px">
-        显示表头 <i-switch v-model="showHeader" style="margin-right: 5px"></i-switch>
-      </i-col>
-    </Row>
     <div class="tab_header">
       <Row :gutter="32">
         <i-col :sm="24" :xs="24" class="tabs-style">
@@ -114,7 +103,7 @@
       </div>
     </div>
     <div style="overflow-x: auto">
-      <Table :border="showBorder" :loading="loading.loading" :stripe="showStripe" :show-header="showHeader"  :data="stockList.stocks0" :columns="stockConfig" style="min-width: 600px; "></Table>
+      <Table border :loading="loading.loading" :data="stockList.stocks0" :columns="stockConfig" style="min-width: 600px; "></Table>
     </div>
     <!--table-->
     <div class="table_page">
@@ -126,9 +115,6 @@
   export default{
     data () {
       return {
-        showBorder: true,
-        showStripe: false,
-        showHeader: true,
         stockList:{
           stocks0:[],
           stocks1:[],
@@ -149,7 +135,6 @@
         },
         tabVau:'office',
         searchVau:'',
-        a:12,
         stockConfig0:[
           {
             title: '编号',
@@ -311,7 +296,6 @@
                   props: {
                     type: 'default',
                     size: 'large',
-                    class:'a'
                   },
                   on: {
                     click: () => {
@@ -336,7 +320,17 @@
                           }
                           this.confirm("月度需求申请提示","<p>申请编号：<span class='red'>"+params.row.id+"</span></p><p>申请名称：<span class='red'>"+params.row.name+"</span></p><p>申请数量：<span class='red'>"+numEle+"</span></p><p>申请类型：<span class='red'>"+type+"</span></p><p style='color: #f00'>是否申请？</p>",e=>{
                              if(e){
-                               this.$api.post('/api.php/index/badd',{"id":params.row.id,"uid":this.$userInfo.id,"type":0},r=>{
+                               this.$api.get('/api.php/index/badd',{"id":params.row.id,"uid":this.$userInfo.id,"type":0,"num":numEle},r=>{
+                                 if(r.status==1){
+                                   this.$Message.destroy();
+                                   this.$Message.success({content:'申请成功',duration:2})
+                                 }else{
+                                   this.$Message.destroy();
+                                   this.$Message.error({content:'申请失败',duration:2})
+                                 }
+                               },e=>{
+                                 this.$Message.destroy();
+                                 this.$Message.error({content:'网络不稳定，请求失败',duration:2})
                                })
                              }
                           });
@@ -462,7 +456,6 @@
           title:title,
           content: content,
           onOk: () => {
-            this.$Message.info('Clicked ok');
             call(true)
           },
           onCancel: () => {

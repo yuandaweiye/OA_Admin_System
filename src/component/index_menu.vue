@@ -15,7 +15,7 @@
         menuActive:'',
         items:[
           {
-            title:"办公商品管理",
+            title:"办公用品管理",
             classID:1,
             isActive:false,
             type:'office',
@@ -31,18 +31,34 @@
               {
                 name:"临时急性物品申请",
                 url:"/office/acuteApply"
+              },
+              {
+                name:"月度需求审批",
+                url:"/office/monthApproval"
+              },
+              {
+                name:"办公用品领用审批",
+                url:"/office/useApproval"
+              },
+              {
+                name:"临时急性物品审批",
+                url:"/office/acuteApproval"
+              },
+              {
+                name:"查看我的办公用品审批进度",
+                url:'/office/myProgress'
               }
-
             ]
           },
           {
             title:"车辆管理",
             classID:1,
             isActive:false,
+            type:'car',
             Children:[
               {
-                name:"租借战车",
-                url:"mda"
+                name:"车辆管理（行政）",
+                url:"/car/carManageMent"
               },
               {
                 name:"买卖战车",

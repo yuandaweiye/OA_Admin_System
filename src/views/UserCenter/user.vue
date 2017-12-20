@@ -112,7 +112,7 @@
             </div>
             <p>
              更换头像
-              <input type="file" value="更换头像">
+              <input type="file" id="a" value="更换头像">
             </p>
             <Upload action="//jsonplaceholder.typicode.com/posts/" :format="['jpg','jpeg','png','gif']">
               <i-button type="ghost" icon="ios-cloud-upload-outline">更换头像</i-button>
@@ -382,7 +382,18 @@
           this.check[key]=false
         }
       }
-
+    }
+  }
+  function handleFiles(files) {
+    if (files.length) {
+      var file = files[0];
+      var reader = new FileReader();
+      if (/text\/\w+/.test(file.type)) {
+        reader.onload = function() {
+          $('<pre>' + this.result + '</pre>').appendTo('body');
+        }
+        reader.readAsText(file);
+      }
     }
   }
 </script>

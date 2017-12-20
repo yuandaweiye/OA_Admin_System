@@ -102,7 +102,7 @@
       text-align: center !important;
     }
     .goIndex i{
-      font-size: 0px;
+      font-size: 0;
     }
 
     /*右侧样式*/
@@ -170,7 +170,7 @@
         </i-col>
       </Row>
     </div>
-    <Spin fix v-show="routerLoad"></Spin>
+    <Spin fix v-show=""></Spin>
   </div>
 
 </template>
@@ -193,7 +193,7 @@
           isMenu:true,
           index:'',
           menuActive:'',
-          routerLoad:this.$routerLoad.routerLoad
+          routerLoad:this.$routerLoad
         }
       },
 //        组件加载完闭之后
@@ -203,7 +203,7 @@
       //      判断用户是否登录，如果登录
       let userInfo=utils.getCookie("oa_userInfo");
       if(!userInfo){
-        location.href="/login"
+        this.$router.push({path:'/login/'});
       }else{
         this.$api.post('/api.php/index/login ',{"name":userInfo.username,"pass":userInfo.password},r=>{
           if(r.status===1){
@@ -211,19 +211,22 @@
          //   定义全局变量
             Vue.prototype.$userInfo=r.data;
           }else{
-            window.location.href='/login/'
+            this.$router.push({path:'/login/'});
           }
+        },e=>{
+          this.$router.push({path:'/login/'});
         })
         console.log(userInfo)
+
       }
       this.getRouter()
     },
     methods: {
       getRouter:function () {
         //      获取当前路由信息，决定加载哪个左侧栏
-          var nowRouter=this.$route.path;
-          if(nowRouter=="/" || nowRouter=="/index" || nowRouter=="/usercenter" || nowRouter=="/membermanage" || nowRouter=="/telephoneP" || nowRouter=="/tool" ){this.isMenu=true;}else{this.isMenu=false;};
-        this.menuActive=this.$route.path
+        var nowRouter=this.$route.path;
+        if(nowRouter=="/" || nowRouter=="/index" || nowRouter=="/usercenter" || nowRouter=="/membermanage" || nowRouter=="/telephoneP" || nowRouter=="/tool" ){this.isMenu=true;}else{this.isMenu=false;};
+        this.menuActive=this.$route.path;
       }
     },
     components:{
@@ -233,7 +236,16 @@
     },
 //    监听路由的变化
     watch: {
-      "$route": "getRouter"
+      "$route": "getRouter",
+//      routerLoad:{
+//        handler:function(val,oldval){
+//          console.log(val)
+//        },
+//        deep:true//对象内部的属性监听，也叫深度监听
+//      },
+      routerLoad: function(val,oldval){
+        console.log(val+"aaa")
+      }
     }
   };
 </script>

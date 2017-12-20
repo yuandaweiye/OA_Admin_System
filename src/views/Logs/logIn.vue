@@ -227,9 +227,13 @@
           console.log(r);
           if(r.status===1){
             this.$Message.destroy()
-            this.$Message.success({content:'登录成功，即将为你跳转至首页',duration:.5, onClose: res=> {
+            this.$Message.success({content:'登录成功，即将为你跳转',duration:.5, onClose: res=> {
                utils.setCookie(this.userName,this.userPwd,1);
-               location.href='/index';
+              if(this.$rourer.from && this.$rourer.from.path){
+                this.$router.push({path:this.$rourer.from.path})
+              }else{
+                this.$router.push({path:'/index'})
+              }
             }});
           }else{
             this.$Message.destroy()

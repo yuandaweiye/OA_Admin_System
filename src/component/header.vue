@@ -71,11 +71,14 @@
   </header>
 </template>
 <script type="text/ecmascript-6">
+  import  utils  from '../libs/util';
   export default{
     mounted () {},
     methods :{
       signOut () {
-        window.location.href='/login'
+      //  window.location.href='/login'
+     //   utils.delCookie("oa_userInfo");
+        this.$router.push({path:'/login'})
       }
     }
   }

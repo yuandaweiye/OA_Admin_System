@@ -33,7 +33,7 @@ util.setCookie= function (c_name,value,expiredays){
   users.username=c_name;
   users.password=value;
   $.cookie("oa_userInfo",Base64.encode(Base64.encode(JSON.stringify(users))),{expires:expiredays,path:'/'});
-  if(!!$.cookie("oa_users")){
+  if(!!$.cookie("oa_userInfo")){
     return true;
   }else{
     return false;
