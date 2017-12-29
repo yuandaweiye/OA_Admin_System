@@ -50,12 +50,13 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
+    hot:true,
     noInfo: true,
     overlay: true,
     proxy: {
       // 请求到 '/device' 下 的请求都会被代理到 target： http://debug.xxx.com 中
       '/api.php/*': {
-        target: 'http://oa.xgyuanda.com',
+        target: 'http://abc.xgyuanda.com',
         secure: false, // 接受 运行在 https 上的服务
         changeOrigin: true
       }
@@ -74,7 +75,7 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"',
-        API_ROOT: '"http://oa.xgyuanda.com/api.php"'
+        API_ROOT: '"http://abc.xgyuanda.com/api.php"'
       }
     }),
     new webpack.optimize.UglifyJsPlugin({

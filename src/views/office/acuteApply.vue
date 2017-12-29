@@ -444,9 +444,9 @@
           wname:datas.name,
           xing:datas.size,
           com:datas.company,
-          Num:datas.number,
-          Unit:datas.unit,
-          Content:datas.remake
+          num:datas.number,
+          unit:datas.unit,
+          content:datas.remake
         };
         datas.status=1;
         this.submitList.splice(index,1,datas);

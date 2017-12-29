@@ -168,11 +168,11 @@
       </div>
       <div class="quickOption_card">
         <Row :gutter="30">
-          <Col :md="6" :sm="8" :xs="12" v-for="item in columnList">
+          <Col :md="6" :sm="8" :xs="12" v-for="(val,item) in columnList">
             <Card>
               <div class="card" style="text-align:center;padding: 0">
-                <router-link :to="item.url" >
-                   <h3><span class="icon icon_office"><Icon type="ios-calculator"></Icon></span> {{item.label}}</h3>
+                <router-link :to="val.url" >
+                   <h3><span class="icon icon_office"><Icon type="ios-calculator"></Icon></span> {{val.label}}</h3>
                 </router-link>
               </div>
             </Card>

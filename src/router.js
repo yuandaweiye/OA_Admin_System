@@ -4,7 +4,7 @@ import Router from 'vue-router';
 import Index from './views/index.vue';
 import logIn from './views/Logs/LogIn.vue';
 //首页
-import Home from './views/Home/Home.vue';
+import Home from './views/Home/home.vue';
 import AlterQuick from './views/Home/alterQuick';
 import Membermanage from './views/Membermanage/Membermanage.vue';
 import TelephoneP from './views/TelephoneP/TelephoneP.vue';
@@ -17,6 +17,10 @@ import MonthApproval from './views/office/monthApproval';
 import UseApproval from  './views/office/useApproval.vue';
 import AcuteApproval from  './views/office/acuteApproval.vue';
 import MyProgress from './views/office/myProgress.vue';
+import PendApply from './views/office/pendApply';
+
+
+
 //车辆管理
 import CarManageMent from './views/car/carManageMent';
 import Other from './views/404/404.vue';
@@ -45,6 +49,8 @@ const routers = [
     {path:'/office/useApproval',name:'useApproval',component:UseApproval},
     {path:'/office/acuteApproval',name:'acuteApproval',component:AcuteApproval},
     {path:'/office/myProgress',name:'myProgress',component:MyProgress},
+    //我的待申请栏
+    {path:'/office/pendApply',name:'pendApply',component:PendApply},
     //  车辆管理
     {path:'/car/carManageMent',name:'carManageMent',component:CarManageMent},
   ]},

@@ -33,11 +33,30 @@ export default {
     color: #fff;
   }
 
+  /*表格样式修改*/
+  .ivu-table-cell{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 
-.app_Content{
-    height: 100%;
-    width: 100%;
-}
+/*提示框样式*/
+  .ivu-message-notice-content{
+    box-shadow: 0 1px 8px 1px rgba(0,0,0,.8) !important;
+    padding: 20px 30px !important;
+  }
+
+  /*分页样式*/
+  .table_page{
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .app_Content{
+      height: 100%;
+      width: 100%;
+      overflow-y: scroll;
+    overflow-x: hidden;
+  }
 
 h1, h2 {
   font-weight: normal;
@@ -142,4 +161,15 @@ color: #19BE6B !important;
 .margin-b-5{
   margin-bottom:5px !important;
 }
+
+  @media screen and (max-width: 640px) {
+    /*改变分页样式*/
+    .ivu-page-item,.ivu-page-item-jump-next, .ivu-page-item-jump-prev, .ivu-page-next, .ivu-page-prev{
+      width: 26px;
+      height: 26px;
+      max-width: 26px !important;
+      min-width: auto !important;
+      line-height: 26px;
+    }
+  }
 </style>

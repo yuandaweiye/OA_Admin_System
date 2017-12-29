@@ -35,8 +35,16 @@ new Vue({
   render: h => h(App)
 });
 
+//路由进度条配置
 iView.LoadingBar.config({
   height: 4
+});
+
+//提示框配置
+iView.Message.config({
+  top: 200,
+  duration: 3,
+  closable:true
 });
 
 router.beforeEach((to, from, next) => {

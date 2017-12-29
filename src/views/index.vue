@@ -68,6 +68,7 @@
   .index-content_right{
     background: #fff;
     height: 800px;
+    overflow-y: auto;
   }
 
   /*返回首页*/
@@ -132,8 +133,8 @@
 </style>
 <template>
   <div class="index">
-    <Header>
-    </Header>
+    <Headers>
+    </Headers>
     <nav>
       <Row>
         <i-col :md="{span: 6,push:0}" :sm="{span: 6}" :xs="{span:6}">
@@ -214,7 +215,7 @@
             this.$router.push({path:'/login/'});
           }
         },e=>{
-          this.$router.push({path:'/login/'});
+            this.$router.push({path:'/login/'});
         })
         console.log(userInfo)
 
@@ -230,19 +231,13 @@
       }
     },
     components:{
-      "Header":Header,
+      "Headers":Header,
       "indexLeft":indexLeft,
       "indexMenu":indexMenu
     },
 //    监听路由的变化
     watch: {
       "$route": "getRouter",
-//      routerLoad:{
-//        handler:function(val,oldval){
-//          console.log(val)
-//        },
-//        deep:true//对象内部的属性监听，也叫深度监听
-//      },
       routerLoad: function(val,oldval){
         console.log(val+"aaa")
       }

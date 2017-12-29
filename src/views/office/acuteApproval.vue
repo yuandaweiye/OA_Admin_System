@@ -239,11 +239,6 @@
       }
     },
     created () {
-      this.$Message.config({
-        top: 200,
-        duration: 3,
-        closable: true
-      });
     },
     methods:{
       allSubmitTip (type) {
@@ -280,7 +275,7 @@
         }else{
           this.$Message.destroy();
           this.$Message.warning({
-            content: '请勾选你要一键操作的数据！'
+            content: '请勾选你要一键操作的数据！',closable:true
           });
         }
       },
@@ -303,13 +298,13 @@
             console.log("调取审批通过接口");
             this.$Message.destroy();
             this.$Message.success({
-              content: '通过成功！'
+              content: '通过成功！',closable:true
             });
           }else if(type && type==2){
             console.log("调取审批拒绝接口");
             this.$Message.destroy();
             this.$Message.success({
-              content: '拒绝成功！'
+              content: '拒绝成功！',closable:true
             });
           }
         }

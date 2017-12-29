@@ -1,6 +1,7 @@
 <template>
+
   <div class="index_Menu">
-      <dl v-for="(value,key) in  items" v-show="menuActive.indexOf(value.type)>=0">
+      <dl v-for="(value,key) in  items" v-if="menuActive.indexOf(value.type)>=0">
         <dt @click="openItem(key)" :class="value.isActive ? 'iTem_active' :''"><span><i class="iconfont icon-jisuanqi" style="font-size: 24px"></i></span><strong>{{value.title}}</strong><em><i class="iconfont icon-you" style="font-size: 14px"></i></em></dt>
         <div class="menu_list" :style="{height:value.height}">
           <dd class="menu-list_item" v-for="(v,k) in value.Children" @click="checkItem($event,k)" :class="{'active':menuActive==v.url}"><router-link :to="v.url">{{v.name}}</router-link></dd>
@@ -43,6 +44,10 @@
               {
                 name:"临时急性物品审批",
                 url:"/office/acuteApproval"
+              },
+              {
+                name:'我的添加栏',
+                url:'/office/pendApply'
               },
               {
                 name:"查看我的办公用品审批进度",

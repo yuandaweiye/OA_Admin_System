@@ -58,7 +58,7 @@
     color: #FF0101;
   }
   .personCenter_from p .label{
-    width: 60px;
+    width: 70px;
     text-align: justify;
     float: left;
   }

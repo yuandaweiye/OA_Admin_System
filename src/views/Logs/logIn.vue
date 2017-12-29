@@ -239,6 +239,9 @@
             this.$Message.destroy()
             this.$Message.error({content:'登录失败，账号或密码不对',duration: 3});
           }
+        },e=>{
+          this.$Message.destroy()
+          this.$Message.error({content:'网络链接失败',duration: 3});
         })
       }
     }

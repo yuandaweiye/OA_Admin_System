@@ -39,7 +39,7 @@ function apiAxios (method, url, params, success, error) {
     url:url,
     data: method === 'POST' || method === 'PUT' ? qs.stringify(params) : null,
     params: method === 'GET' || method === 'DELETE' ? params : null,
-    timeout: 10000,
+    timeout: 30000,
     headers: {'X-Requested-With': 'XMLHttpRequest'},
     withCredentials: false
   })
